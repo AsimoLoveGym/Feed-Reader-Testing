@@ -26,7 +26,6 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
@@ -83,10 +82,10 @@ $(function() {
               menuIcon.click();
               expect(x.className.indexOf('menu-hidden') > -1).toBe(true);
           });
-
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function() {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -95,10 +94,24 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
+         beforeEach(function(done){
+          //  cb parameter should be done
+              loadFeed(0, done);
+         });
+
+         it('should be at least one .entry element with .feed container', function(done) {
+             var entryElements = $(".feed .entry");
+             console.log(entryElements);
+             expect(entryElements.length > 0).toBe(true);
+             done();
+         });
+    });
+
     /* TODO: Write a new test suite named "New Feed Selection"
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+
 }());
