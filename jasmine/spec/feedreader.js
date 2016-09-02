@@ -75,6 +75,15 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
+          it('visibility should be switched by menu icon clicked', function() {
+              var x = document.getElementsByTagName("body")[0];
+              var menuIcon = $('.menu-icon-link');
+              menuIcon.click();
+              expect(x.className.indexOf('menu-hidden') > -1).toBe(false);
+              menuIcon.click();
+              expect(x.className.indexOf('menu-hidden') > -1).toBe(true);
+          });
+
     });
 
     /* TODO: Write a new test suite named "Initial Entries" */
