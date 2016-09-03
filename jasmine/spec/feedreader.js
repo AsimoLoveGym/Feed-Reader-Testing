@@ -34,7 +34,9 @@ $(function() {
          it('URLs are defined and not empty for all allFeeds element', function() {
              for(var i = 0; i < allFeeds.length; i ++){
                expect(allFeeds[i].url).toBeDefined();
-               expect(allFeeds[i].url).not.toBe(null);
+              //  REMEMBER: Null is a specific value
+              //  expect(allFeeds[i].url).not.toBe(null);
+               expect(allFeeds[i].url).not.toBe('');
              }
          });
 
@@ -46,7 +48,8 @@ $(function() {
          it('names are defined and not empty for all allFeeds element', function() {
              for(var i = 0; i < allFeeds.length; i ++){
                expect(allFeeds[i].name).toBeDefined();
-               expect(allFeeds[i].name).not.toBe(null);
+              //  expect(allFeeds[i].name).not.toBe(null);
+               expect(allFeeds[i].name).not.toBe('');
              }
          });
     });
@@ -99,11 +102,14 @@ $(function() {
               loadFeed(0, done);
          });
 
-         it('should be at least one .entry element with .feed container', function(done) {
+        //  it('should be at least one .entry element with .feed container', function(done) {
+        // From project review suggestion, since ASYNC is not called here,
+        // no necessary in the below spec
+        it('should be at least one .entry element with .feed container', function() {
              var entryElements = $(".feed .entry");
-             console.log(entryElements);
+            //  console.log(entryElements);
              expect(entryElements.length > 0).toBe(true);
-             done();
+            //  done();
          });
     });
 
